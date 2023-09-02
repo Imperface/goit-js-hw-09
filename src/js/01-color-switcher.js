@@ -5,7 +5,6 @@ const refsBtn = {
 };
 const { start, stop } = refsBtn;
 let changeBgcIntervalId = null;
-let countOfChanging = 0;
 
 const btnAddAttribute = (attribute, ref) => ref.setAttribute(attribute, '');
 const btnRemoveAttribute = (attribute, ref) =>
@@ -19,10 +18,6 @@ const btnToggleClass = (toggleClass, refF, refS) => {
 const changeBgc = () => {
   const randomColor = getRandomHexColor();
   document.body.style.backgroundColor = randomColor;
-  countOfChanging += 1;
-  console.log(
-    `successful color change, hex: ${randomColor}, number of changes: ${countOfChanging}`
-  );
 };
 
 const onBtnStartClick = e => {
