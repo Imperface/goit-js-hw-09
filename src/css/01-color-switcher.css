@@ -12,3 +12,6 @@
 .btn-container button.disabled {
   cursor: not-allowed;
 }
+body {
+  transition: background-color 1s linear;
+}
