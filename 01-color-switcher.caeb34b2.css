@@ -1,0 +1,2 @@
+.btn-container{justify-content:center;align-items:center;column-gap:20px;display:flex}.btn-container button{min-width:80px;height:80px;cursor:pointer}.btn-container button.disabled{cursor:not-allowed}body{transition:background-color .5s linear}
+/*# sourceMappingURL=01-color-switcher.caeb34b2.css.map */
