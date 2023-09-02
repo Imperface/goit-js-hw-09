@@ -1,0 +1,14 @@
+.btn-container {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.btn-container button {
+  min-width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
+.btn-container button.disabled {
+  cursor: not-allowed;
+}
