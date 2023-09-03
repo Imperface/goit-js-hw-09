@@ -25,23 +25,24 @@ const setInputValues = () => ({
   amountValue: Number(refsInput.amount.value),
 });
 
-function createPromise(position, delay) {
+function createPromise(position, delay, msCounter) {
   return new Promise((resolve, reject) => {
     const shouldResolve = Math.random() > 0.3;
     if (shouldResolve) {
-      resolve(`✅ Fulfilled promise ${position} in ${delay}ms`);
+      resolve(`✅ Fulfilled promise ${position} in ${msCounter}ms`);
     }
-    reject(`❌ Rejected promise ${position} in ${delay}ms`);
+    reject(`❌ Rejected promise ${position} in ${msCounter}ms`);
   });
 }
 
 const onBtnCreateClick = e => {
   e.preventDefault();
   refBtnCreate.setAttribute('disabled', '');
-  const { delayValue, stepValue, amountValue } = userInputData;
+  let { delayValue, stepValue, amountValue } = userInputData;
   let counter = 1;
+  let msCounter = delayValue;
   setTimeout(() => {
-    createPromise(counter, delayValue)
+    createPromise(counter, delayValue, msCounter)
       .then(result => {
         Notify.success(result);
       })
@@ -54,7 +55,8 @@ const onBtnCreateClick = e => {
   }, delayValue);
 
   inputStepIntervalId = setInterval(() => {
-    createPromise(counter, stepValue)
+    msCounter += stepValue;
+    createPromise(counter, stepValue, msCounter)
       .then(result => {
         Notify.success(result);
       })
@@ -82,7 +84,7 @@ const onFormInput = e => {
     clearInput();
     return;
   }
-  if (delayValue && stepValue && amountValue) {
+  if (delayValue && (stepValue || stepValue === 0) && amountValue) {
     refBtnCreate.removeAttribute('disabled', '');
   }
 };
