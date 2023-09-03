@@ -48,6 +48,7 @@ const fp = flatpickr(refInputDateSelection, {
     globTimerMs = timerMs;
     const date = convertMs(timerMs);
     renderDate(date);
+    refInputDateSelection.setAttribute('disabled', '');
   },
 });
 let updateTimerIntervalIn = null;
@@ -59,6 +60,7 @@ const onBtnStartClick = () => {
     renderDate(msTransformToDate);
     if (globTimerMs < 1000) {
       clearInterval(updateTimerIntervalIn);
+      Report.success('Time has passed', '', 'Okay');
       console.log('Stop interval, ms < 1000');
     }
   };
