@@ -52,6 +52,7 @@ const fp = flatpickr(refInputDateSelection, {
 });
 let updateTimerIntervalIn = null;
 const onBtnStartClick = () => {
+  refBtnStart.setAttribute('disabled', '');
   const updateTimerInterval = () => {
     globTimerMs -= 1000;
     let msTransformToDate = convertMs(globTimerMs);
