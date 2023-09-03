@@ -1,0 +1,17 @@
+.calendar-container {
+  display: flex;
+  justify-content: center;
+}
+.timer {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  column-gap: 30px;
+  font-size: 30px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
