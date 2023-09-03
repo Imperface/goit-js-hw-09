@@ -52,25 +52,25 @@ const onBtnCreateClick = e => {
       .finally(() => {
         counter += 1;
       });
-  }, delayValue);
 
-  inputStepIntervalId = setInterval(() => {
-    msCounter += stepValue;
-    createPromise(counter, stepValue, msCounter)
-      .then(result => {
-        Notify.success(result);
-      })
-      .catch(result => {
-        Notify.failure(result);
-      })
-      .finally(() => {
-        if (counter === amountValue) {
-          clearInterval(inputStepIntervalId);
-          refBtnCreate.removeAttribute('disabled', '');
-        }
-        counter += 1;
-      });
-  }, stepValue);
+    inputStepIntervalId = setInterval(() => {
+      msCounter += stepValue;
+      createPromise(counter, stepValue, msCounter)
+        .then(result => {
+          Notify.success(result);
+        })
+        .catch(result => {
+          Notify.failure(result);
+        })
+        .finally(() => {
+          if (counter === amountValue) {
+            clearInterval(inputStepIntervalId);
+            refBtnCreate.removeAttribute('disabled', '');
+          }
+          counter += 1;
+        });
+    }, stepValue);
+  }, delayValue);
 };
 const onFormInput = e => {
   userInputData = setInputValues();
@@ -84,7 +84,11 @@ const onFormInput = e => {
     clearInput();
     return;
   }
-  if (delayValue && (stepValue || stepValue === 0) && amountValue) {
+  if (
+    (delayValue || delayValue === 0) &&
+    (stepValue || stepValue === 0) &&
+    amountValue
+  ) {
     refBtnCreate.removeAttribute('disabled', '');
   }
 };
